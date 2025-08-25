@@ -35,13 +35,14 @@ public class AssociateServiceImpl implements AssociateService {
     }
 
     @Override
-    public Associate findById(String id) {
-        return repository.findById(Long.parseLong(id)).orElseThrow(() ->
+    public Associate findById(Long id) {
+        // Mudança para Long ao ivés de usar o parseLong
+        return repository.findById(id).orElseThrow(() ->
                 new NotFoundException("Associado não encontrado"));
     }
 
     @Override
-    public void deleteAssociate(String id) {
+    public void deleteAssociate(Long id) {
         Associate associate = findById(id);
 
         if (associate != null) {
@@ -51,7 +52,7 @@ public class AssociateServiceImpl implements AssociateService {
 
     @Transactional
     @Override
-    public void updateAssociate(AssociateDTO associateDTO, String id) {
+    public void updateAssociate(AssociateDTO associateDTO, Long id) {
         Associate associate = findById(id);
         if (associate != null) {
             associate.setCpf(associateDTO.getCpf());

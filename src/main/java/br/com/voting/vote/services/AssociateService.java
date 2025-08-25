@@ -10,9 +10,9 @@ public interface AssociateService {
 
     List<Associate> findAll();
 
-    Associate findById(String id);
+    Associate findById(Long id);
 
-    void deleteAssociate(String id);
+    void deleteAssociate(Long id);
 
-    void updateAssociate(AssociateDTO associateDTO, String id);
+    void updateAssociate(AssociateDTO associateDTO, Long id);
 }
